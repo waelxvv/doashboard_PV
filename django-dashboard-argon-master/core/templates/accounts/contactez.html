@@ -1,0 +1,349 @@
+{% extends 'layouts/home-layout.html' %}
+{% load static %}
+
+{% block title %}
+    Responsive Contact
+{% endblock %}
+
+{% block style %}
+
+	#round { 
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			font-size:38px;
+			color:blue;
+    }
+
+    #cercle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50px;
+        background: white;
+        border: 1px solid #2786d2;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+        top:-10px;
+        bottom: 0;
+        left: 800%;
+        right: 0;  
+        margin: auto;
+    }
+
+    #cercle:hover{
+    	background-color:#ACC3D5;
+    }
+
+    #tel{
+    	text-align: center;
+    	font-size: 30px;
+        margin: 20px;
+    }
+
+    .pg {
+        font-family: Raleway,sans-serif;
+        font-size: 14px;
+        line-height: 23px;
+        font-weight: bold;
+        color: #797979;
+        
+    }
+
+    .main-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #1c87c9;
+    }
+
+    form {
+        padding: 25px;
+        margin: 25px;
+        box-shadow: 0 2px 5px #f5f5f5; 
+        background: #f5f5f5; 
+    }
+
+    .fas {
+        margin: 25px 10px 0;
+        font-size: 72px;
+        color: #fff;
+    }
+
+    .fa-envelope {
+        transform: rotate(-20deg);
+    }
+
+    .fa-at , .fa-mail-bulk{
+        transform: rotate(10deg);
+    }
+
+    input, textarea {
+        width: calc(100% - 18px);
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #1c87c9;
+        outline: none;
+    }
+
+    input::placeholder {
+        color: #666;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #1c87c9; 
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+    }
+
+    button:hover {
+        background: #2371a0;
+    }
+
+    @media (min-width: 568px) {
+        
+        .main-block {
+            flex-direction: row;
+        }
+
+        .left-part, form {
+            width: 50%;
+        }
+
+        .fa-envelope {
+            margin-top: 0;
+            margin-left: 20%;
+        }
+
+        .fa-at {
+            margin-top: -10%;
+            margin-left: 65%;
+        }
+
+        .fa-mail-bulk {
+            margin-top: 2%;
+            margin-left: 28%;
+        }
+    }
+
+    .form-block{
+        height: 503px;
+        width:600px;
+        position: relative;
+        left:25%;
+    }
+
+    @media (max-width: 600px) {
+
+		.form-block{
+	        height: 503px;
+	        width:400px;
+	        position: relative;
+	        left:10%;
+	    }
+
+	    #cercle{
+	        left:300%;
+	    }
+	}
+
+	@media (min-width: 601px) and (max-width: 650px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:460px;
+	        position: relative;
+	        left:10%;
+	    }
+
+	    #cercle{
+	        left:350%;
+	    }
+	}
+
+	@media (min-width: 651px) and (max-width: 700px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:460px;
+	        position: relative;
+	        left:20%;
+	    }
+
+	    #cercle{
+	        left:420%;
+	    }
+	}
+
+	@media (min-width: 701px) and (max-width: 800px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:510px;
+	        position: relative;
+	        left:20%;
+	    }
+
+	    #cercle{
+	        left:480%;
+	    }
+	}
+
+	@media (min-width: 801px) and (max-width: 870px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:570px;
+	        position: relative;
+	        left:15%;
+	    }
+
+	    #cercle{
+	        left:490%;
+	    }
+	}
+
+	@media (min-width: 871px) and (max-width: 960px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:600px;
+	        position: relative;
+	        left:15%;
+	    }
+
+	    #cercle{
+	        left:540%;
+	    }
+	}
+
+	@media (min-width: 961px) and (max-width: 1000px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:670px;
+	        position: relative;
+	        left:15%;
+	    }
+
+	    #cercle{
+	        left:590%;
+	    }
+	}
+
+	@media (min-width: 1001px) and (max-width: 1100px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:670px;
+	        position: relative;
+	        left:15%;
+	    }
+
+	    #cercle{
+	        left:650%;
+	    }
+	}
+
+	@media (min-width: 1101px) and (max-width: 1200px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:670px;
+	        position: relative;
+	        left:20%;
+	    }
+
+	    #cercle{
+	        left:700%;
+	    }
+	}
+
+	@media (min-width: 1201px) and (max-width: 1250px) {
+
+	    .form-block{
+	        height: 503px;
+	        width:670px;
+	        position: relative;
+	        left:20%;
+	    }
+
+	    #cercle{
+	        left:760%;
+	    }
+	}
+
+    .ml2 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+{% endblock %}
+    
+{% block body %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="/static/assets/img/home/rep1.png" alt="First slide">
+                <div class="carousel-caption d-none d-med-block">
+                    <div class="col text-center">
+                        <h5 class="big-title ml2">Contactez-nous!</h5>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="text-center px-xl-6 px-lg-5 px-md-4 px-sm-2  pb-6 pt-md-5 mt-5 px-xs-1" id="services">
+        <div id="cercle">
+	       <i class="fa fa-phone" id="round"></i>
+        </div>
+    </div>
+    <div id="tel">
+        <span style="color: #2786d2; font-weight: 600;font-family: Raleway,sans-serif;font-size: 19px;line-height: 1.4em;">+216&nbsp;92&nbsp;871&nbsp;174&nbsp;
+        </span>
+        <p class="pg">Appelez-nous ! Nous sommes<br>proches et disponibles.</p>
+    </div>
+    <div class="form-block">
+        <div class="main-block">
+            <div class="left-part">
+                <i class="fas fa-envelope"></i>
+                <i class="fas fa-at"></i>
+                <i class="fas fa-mail-bulk"></i>
+            </div>
+            <form action="/">
+                <div class="info">
+                    <input class="fname" type="text" name="name" placeholder="Nom et prenom">
+                    <input type="text" name="name" placeholder="Email">
+                    <input type="text" name="name" placeholder="Telephone">
+                    <input type="text" name="name" placeholder="Ville">
+                    <p>Votre demande:</p>
+                <div>
+                <textarea rows="4"></textarea>
+                <button type="submit" href="/">Envoyer</button>
+            </form>
+        </div>
+    </div>	
+    <script>
+        // Wrap every letter in a span
+    var textWrapper = document.querySelector('.ml2');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+    anime.timeline({loop: false})
+      .add({
+        targets: '.ml2 .letter',
+        scale: [4,1],
+        opacity: [0,1],
+        //translateZ: 0,
+        easing: "easeOutExpo",
+        duration: 950,
+        delay: (el, i) => 70*i
+      })
+    </script>
+{% endblock %}

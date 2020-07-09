@@ -1,0 +1,436 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Puissance</h5>
+                                        <span class="h2 font-weight-bold mb-0">1550.5 W</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow" id="togg1" style="cursor: pointer;">
+                                            <i class="fas fa-solar-panel"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">          
+                                    <span class="text-nowrap">panneau solaire</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Puissance</h5>
+                                        <span class="h2 font-weight-bold mb-0">0 W</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow" id="togg2" style="cursor: pointer;">
+                                            <i class="fas fa-sun"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Alimenté dans la grille</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Charge</h5>
+                                        <span class="h2 font-weight-bold mb-0">85%</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow" id="togg3" style="cursor: pointer;">
+                                            <i class="fas fa-car-battery"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Batterie</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Puissance</h5>
+                                        <span class="h2 font-weight-bold mb-0">300.25 W</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow" id="togg4" style="cursor: pointer;">
+                                            <i class="fas fa-plug"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Consommation</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col-xl-8 mb-5 mb-xl-0" >
+                <div class="card bg-gradient-default shadow" id="d1"> 
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h2 class="text-white mb-0">Puissance (Kw)</h2>
+                                <span class="text-nowrap">Panneau solaire</span>
+                            </div>
+                            <div class="col">
+                                <ul class="nav nav-pills justify-content-end">
+                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                                            <span class="d-none d-md-block">Mois</span>
+                                            <span class="d-md-none">M</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 25, 30, 35, 45, 50, ]}]}}' data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                                            <span class="d-none d-md-block">Semaine</span>
+                                            <span class="d-md-none">S</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <!-- Chart -->
+                        <div class="chart">
+                        <!-- Chart wrapper -->
+                            <canvas id="supervision" data-url="{% url 'supervision' %}"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-gradient-default shadow" id="d2" style="display: none;"> 
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h2 class="text-white mb-0">Puissance (KW)</h2>
+                                <span class="text-nowrap">Alimenté dans la grille</span>
+                            </div>
+                            <div class="col">
+                                <ul class="nav nav-pills justify-content-end">
+                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                                            <span class="d-none d-md-block">Mois</span>
+                                            <span class="d-md-none">M</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 25, 30, 35, 45, 50, ]}]}}' data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                                            <span class="d-none d-md-block">Semaine</span>
+                                            <span class="d-md-none">S</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <!-- Chart -->
+                        <div class="chart">
+                        <!-- Chart wrapper -->
+                            <canvas id="supervisionGrille" data-url="{% url 'supervisionGrille' %}"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-gradient-default shadow" id="d3" style="display: none;"> 
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h2 class="text-white mb-0">Charge (%) </h2>
+                                <span class="text-nowrap">Batterie</span>
+                            </div>
+                            <div class="col">
+                                <ul class="nav nav-pills justify-content-end">
+                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                                            <span class="d-none d-md-block">Mois</span>
+                                            <span class="d-md-none">M</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 25, 30, 35, 45, 50, ]}]}}' data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                                            <span class="d-none d-md-block">Semaine</span>
+                                            <span class="d-md-none">S</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <!-- Chart -->
+                        <div class="chart">
+                        <!-- Chart wrapper -->
+                            <canvas id="supervisionCharge" data-url="{% url 'supervisionCharge' %}"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-gradient-default shadow" id="d4" style="display: none;"> 
+                    <div class="card-header bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h2 class="text-white mb-0">Puissance (Kw)</h2>
+                                <span class="text-nowrap">Consommation</span>
+                            </div>
+                            <div class="col">
+                                <ul class="nav nav-pills justify-content-end">
+                                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                                            <span class="d-none d-md-block">Mois</span>
+                                            <span class="d-md-none">M</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 25, 30, 35, 45, 50, ]}]}}' data-suffix="k">
+                                        <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                                            <span class="d-none d-md-block">Semaine</span>
+                                            <span class="d-md-none">S</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                    <!-- Chart -->
+                        <div class="chart">
+                        <!-- Chart wrapper -->
+                            <canvas id="supervisionConsommation" data-url="{% url 'supervisionConsommation' %}"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card shadow">
+                    <div class="card-body" style="height: 390px; padding: 0px; border-radius: 5px;">
+                        <a class="weatherwidget-io" href="https://forecast7.com/fr/34d7510d77/sfax-ville/" data-label_1="SFAX VILLE" data-label_2="Météo" data-theme="original" style="border-radius: 10px;" >SFAX VILLE Météo</a>
+                        <script>
+                            !function(d,s,id){
+                                var js,fjs=d.getElementsByTagName(s)[0];
+                                if(!d.getElementById(id)){
+                                    js=d.createElement(s);
+                                    js.id=id;
+                                    js.src='https://weatherwidget.io/js/widget.min.js';
+                                    fjs.parentNode.insertBefore(js,fjs);
+                                }
+                            }
+                            (document,'script','weatherwidget-io-js');
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+    <script>
+        $(function () {
+            var $supervision = $("#supervision");
+            $.ajax({
+                url: $supervision.data("url"),
+                success: function (data) {
+                    var ctx = $supervision[0].getContext("2d");
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'power',
+                                backgroundColor: 'rgb(92, 0, 230,0.3)',
+                                data: data.data
+                            }]          
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var $supervision = $("#supervisionGrille");
+            $.ajax({
+                url: $supervision.data("url"),
+                success: function (data) {
+                    var ctx = $supervision[0].getContext("2d");
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'power',
+                                backgroundColor: 'rgb(0, 250, 230,0.1)',
+                                data: data.data
+                            }]          
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var $supervision = $("#supervisionCharge");
+            $.ajax({
+                url: $supervision.data("url"),
+                success: function (data) {
+                    var ctx = $supervision[0].getContext("2d");
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'power',
+                                backgroundColor: 'rgb(92, 50, 130,0.7)',
+                                data: data.data
+                            }]          
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var $supervision = $("#supervisionConsommation");
+            $.ajax({
+                url: $supervision.data("url"),
+                success: function (data) {
+                    var ctx = $supervision[0].getContext("2d");
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'power',
+                                backgroundColor: 'rgb(192, 150, 30,0.1)',
+                                data: data.data
+                            }]          
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        let togg1 = document.getElementById("togg1");
+        let togg2 = document.getElementById("togg2");
+        let togg3 = document.getElementById("togg3");
+        let togg4 = document.getElementById("togg4");
+        let d1 = document.getElementById("d1");
+        let d2 = document.getElementById("d2");
+        let d3 = document.getElementById("d3");
+        let d4 = document.getElementById("d4");
+        togg1.addEventListener("click", () => {
+            if(getComputedStyle(d1).display != "none" && (getComputedStyle(d2).display != "block" || getComputedStyle(d3).display != "block" || getComputedStyle(d4).display != "block")){
+            } 
+            else {
+                d1.style.display = "block";
+                d2.style.display = "none";
+                d3.style.display = "none";
+                d4.style.display = "none";
+            }   
+        })
+        togg2.addEventListener("click", () => {
+            if(getComputedStyle(d2).display != "none" && (getComputedStyle(d1).display != "block" || getComputedStyle(d3).display != "block" || getComputedStyle(d4).display != "block")){  
+            } 
+            else {
+                d2.style.display = "block";
+                d1.style.display = "none";
+                d3.style.display = "none";
+                d4.style.display = "none";
+            }
+        })
+        togg3.addEventListener("click", () => {
+            if(getComputedStyle(d3).display != "none" && (getComputedStyle(d2).display != "block" || getComputedStyle(d1).display != "block" || getComputedStyle(d4).display != "block")){
+            } 
+            else {
+                d3.style.display = "block";
+                d2.style.display = "none";
+                d1.style.display = "none";
+                d4.style.display = "none";
+            }
+        })
+        togg4.addEventListener("click", () => {
+            if(getComputedStyle(d4).display != "none" && (getComputedStyle(d2).display != "block" || getComputedStyle(d1).display != "block" || getComputedStyle(d3).display != "block")){
+            } 
+            else {
+                d4.style.display = "block";
+                d2.style.display = "none";
+                d3.style.display = "none";
+                d1.style.display = "none";
+            } 
+        })
+    </script> 
+{% endblock javascripts %}

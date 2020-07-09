@@ -1,0 +1,185 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Maps {% endblock title %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Puissance</h5>
+                                        <span class="h2 font-weight-bold mb-0">1550.5 W</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                            <i class="fas fa-solar-panel"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">          
+                                    <span class="text-nowrap">panneau solaire</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Puissance</h5>
+                                        <span class="h2 font-weight-bold mb-0">0 W</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                            <i class="fas fa-sun"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Alimenté dans la grille</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Charge</h5>
+                                        <span class="h2 font-weight-bold mb-0">85%</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                            <i class="fas fa-car-battery"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Batterie</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Puissance</h5>
+                                        <span class="h2 font-weight-bold mb-0">300.25 W</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                            <i class="fas fa-plug"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap">Consommation</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt--7">
+
+      <div class="row">
+        <div class="col">
+          <div class="card shadow border-0">
+            <div id="map-canvas" class="map-canvas"  style="height: 450px;"></div>
+            <style>
+          .cluster img {
+            width: 35px;
+            height: 35px;
+            clip: unset;
+          };
+    </style>
+
+          </div>
+        </div>
+      </div>
+
+      {% include "includes/footer.html" %}
+
+    </div>
+
+    
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+    <script>
+                  function initMap() {
+
+              var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                zoom: 6.75,
+                center: {lat:34.8571621 , lng:10.1567628 }
+              });
+
+              // Create an array of alphabetical characters used to label the markers.
+              var labels = 'PPPPPPPPPPPPPPPPPPPPPPPPPPPPP';
+
+              // Add some markers to the map.
+              // Note: The code uses the JavaScript Array.prototype.map() method to
+              // create an array of markers based on a given "locations" array.
+              // The map() method here has nothing to do with the Google Maps API.
+              var markers = locations.map(function(location, i) {
+                return new google.maps.Marker({
+                  position: location,
+                  label: labels[i % labels.length]
+                });
+              });
+
+              // Add a marker clusterer to manage the markers.
+              var markerCluster = new MarkerClusterer(map, markers,
+                  {
+                    styles: [{
+                      url: 'https://blog.olawatt.com/hubfs/Olawatt/Olawatt_guides_dossiers/Pictos/004-solar-panel.png',
+                      height: 35,
+                      width: 35,
+                      textColor: 'transparent',
+                    }]
+                  });
+            }
+            var locations = [
+              {lat: 34.77102, lng: 10.75417},
+              {lat: 34.77214, lng: 10.68825},
+              {lat: 34.76989, lng: 10.7267},
+              {lat: 36.86692, lng: 10.16785},
+              {lat: 36.68742, lng: 9.77142},
+              {lat: 36.83614, lng: 10.1323},
+              {lat: 36.86004, lng: 10.19307},
+              {lat: 36.85365, lng: 11.05464},
+              {lat: 36.58506, lng: 10.84315},
+              {lat: 36.43936, lng: 10.14827},
+              {lat: 35.87165, lng: 10.59184},
+              {lat: 36.98497, lng: 9.77959},
+              {lat: 35.87107, lng: 10.59112},
+              {lat: 35.87274, lng: 10.57112},
+              {lat: 35.85869, lng: 10.56889},
+              {lat: 35.82474, lng: 10.5567},
+              {lat: 35.75512, lng: 10.81008},
+              {lat: 35.75606, lng: 10.80943},
+              {lat: 35.67836, lng: 10.07779},
+              {lat: 36.19635, lng: 8.5827},
+              {lat: 35.39884, lng: 9.34625},
+              {lat: 34.54134, lng: 9.52752},
+              {lat: 35.46717, lng: 10.98416}
+            ]
+    </script>
+{% endblock javascripts %}
